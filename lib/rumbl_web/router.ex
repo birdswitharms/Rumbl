@@ -1,5 +1,6 @@
 defmodule RumblWeb.Router do
   use RumblWeb, :router
+  alias RumblWeb.Auth
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -7,6 +8,7 @@ defmodule RumblWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug Auth
   end
 
   pipeline :api do
