@@ -1,6 +1,6 @@
 defmodule RumblWeb.UserController do
   use RumblWeb, :controller
-  plug :authenticate when action in [:index, :show]
+  plug :authenticate_user when action in [:index, :show]
 
   alias Rumbl.Accounts
   alias Rumbl.Accounts.User
@@ -33,7 +33,7 @@ defmodule RumblWeb.UserController do
     render(conn, "index.html", users: users)
   end
 
-  defp authenticate(conn, _opts) do
+  defp authenticate_user(conn, _opts) do
     if conn.assigns.current_user do
       conn
     else
